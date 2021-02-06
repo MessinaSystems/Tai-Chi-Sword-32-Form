@@ -3,6 +3,7 @@
     <head>
         <!-- head definitions go here -->
     </head>
+	<h1 id="Heading">First Section</h1>
     <body>
         <!-- the content goes here -->
 		<!--<iframe id="ytplayer" type="text/html" width="640" height="360"
@@ -12,13 +13,25 @@
 		src="https://www.youtube.com/embed/K1priHbQxP8?playlist=K1priHbQxP8&loop=1&start=50&end=60&autoplay=1" 
 		frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
 		
+		<script>
+		// Declaration
+		var state = 1; 
+		var myObj = {
+          "Start Time":[10,58,103,145], // Sections
+          "End Time":[64,108,150,202],
+        };
+		var section_names = ["First", "Second", "Third", "Forth"];
+		
+		</script>
+		
 		<div id="myvideo"></div>
 		<script async src="https://www.youtube.com/iframe_api"></script>
 		<script>
+		//call as function on load
 		var player;
 		var videoId='K1priHbQxP8';
-		var startSeconds = 50;  // set your own video start time when loop play
-		var endSeconds = 80;   // set your own video end time when loop play
+		var startSeconds = myObj["Start Time"][state-1];//50;  // set your own video start time when loop play
+		var endSeconds = myObj["End Time"][state-1];//80;   // set your own video end time when loop play
 		var playerConfig = {
 		  height: '727',
 		  width: '100%',
@@ -62,6 +75,26 @@
 
 		</script>
 		
+		<!--Interface-->
+		<button id="1" onclick="myFunction(this.id)">First Section</button>
+		<button id="2" onclick="myFunction(this.id)">Second Section</button>
+		<button id="3" onclick="myFunction(this.id)">Third Section</button>
+		<button id="4" onclick="myFunction(this.id)">Forth Section</button>
+		
+		<p><br><a href="http://www.egreenway.com/taichichuan/sword32.htm#Part1">Movement breakdown</a></p>
+		
+		<script>
+		// Functions
+		function myFunction(clicked_id) {
+          document.getElementById("Heading").innerHTML = section_names[clicked_id-1] + " Section";
+		  state = clicked_id
+		  
+		  startSeconds = myObj["Start Time"][state-1];//50;  // set your own video start time when loop play
+		  endSeconds = myObj["End Time"][state-1];//80;   // set your own video end time when loop play
+		  //$("#myvideo").load(" #myvideo > *"); //refresh page? <script src="https://code.jquery.com/jquery-3.5.1.js">
+        }
+		</script>
 		
     </body>
 </html>
+
